@@ -4,7 +4,11 @@
   "description": "Simple twitter clone",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "jest"
+  },
+  "engines": {
+   "node": "9.5.0"
   },
   "repository": {
     "type": "git",
