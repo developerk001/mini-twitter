@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const hsb = require('hbs')
 const expressHbs = require('express-handlebars')
+const port = process.env.PORT || 3000
 
 // Extracting From Globals
 const app = express()
@@ -22,7 +23,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/sherlock', mainRoutes)
 
 // Listening To Port And Handling Error
-app.listen(3000,  err => {
+app.listen(port,  err => {
   if (err) console.log(err)
   else console.log('Sever is running')
 })
