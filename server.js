@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/sherlock', mainRoutes)
 
 // Listening To Port And Handling Error
-app.listen(3000, '127.0.0.1', err => {
+app.listen(3000,  err => {
   if (err) console.log(err)
   else console.log('Sever is running')
 })
