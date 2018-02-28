@@ -11,17 +11,20 @@ const port = process.env.PORT || 3000
 const app = express()
 
 // Requiring Locals
-const mainRoutes = require('./routes/main.js')
+const mainRoutes = require('./routes/main')
+const db = require('./db/db');
 
 // Setting Up Middlewares
-app.engine('.hbs', expressHbs({defalutLayout: 'layout', extname: '.hbs'}))
-app.set('view engine', 'hbs')
-app.use(express.static(__dirname + '/public'))
-app.use(morgan('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
-app.use('/sherlock', mainRoutes)
+app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(mainRoutes)
+
+// 1:05:49
 // Listening To Port And Handling Error
 app.listen(port,  err => {
   if (err) console.log(err)
