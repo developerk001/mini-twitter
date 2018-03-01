@@ -1,7 +1,25 @@
-/* body {
-  padding-top: 50px;
-} */
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+#signup {
+    width: 100%;
+    color: #333333;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+}
+.navbar {
+  width: 100%;
+  padding: 1em 30em;
+}
+.navbar a.navbar-brand {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 2em;
+  font-family: 'Varela Round', sans-serif;
 }

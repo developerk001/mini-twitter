@@ -29,9 +29,9 @@ const UserSchema = new Schema({
   }]
 })
 
-UserSchema.pre('save', next => {
-  if (!user.isModified('password')) return next()
-  if (usre.password) {
+UserSchema.pre('save', function(next) {
+  if (!this.isModified('password')) return next()
+  if (this.password) {
     bcrypt.genSalt(10, (err, salt) => {
       if (err) return next()
       bcrypt.hash(this.password, salt, (err, hash) => {
@@ -43,11 +43,14 @@ UserSchema.pre('save', next => {
   }
 })
 
-UserSchema.methods.avatar = size => {
-  if (size) size = 200
+UserSchema.methods.avatar = function(size = 200) {
   if (!this.email) return `https://gravatar.com/avatar/?s=${size}&d=retro`
-  var md5 = crypto.cryptoHash('md5').update(this.email).digest('hex')
+  var md5 = crypto.createHash('md5').update(this.email).digest('hex')
   return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`
+}
+
+UserSchema.methods.isMyPassword = async password => {
+  return await brcypt.compare(password, this.password)
 }
 
 module.exports = mongoose.model('User', UserSchema)
